@@ -1,5 +1,7 @@
 # ai-leetcode
 
+[![Deploy mdBook to GitHub Pages](https://github.com/ZhangHanDong/ai-leetcode/actions/workflows/pages.yml/badge.svg)](https://github.com/ZhangHanDong/ai-leetcode/actions/workflows/pages.yml)
+
 一本由可验证代码、算法 Trace 和基准测试驱动生成的算法学习书。
 
 本项目不把题解 Markdown 当作唯一真源。题目元数据、算法模式、解法代码、测试、动画 Trace 和性能结果分别保存，再由构建工具投影为 mdBook 页面。
@@ -13,6 +15,8 @@
 - 最终在 mdBook 中统一呈现正文、代码、动画、关联题目和运行入口。
 
 ## 快速开始
+
+在线阅读：[AI LeetCode](https://zhanghandong.github.io/ai-leetcode/)
 
 先安装当前构建所需的 mdBook 与 Mermaid 预处理器：
 
@@ -32,6 +36,8 @@ mdbook serve book --open
 ```bash
 make check
 ```
+
+推送到 `main` 后，GitHub Actions 会运行相同的质量检查，并将 `book/book` 自动部署到 GitHub Pages。
 
 首个完整样板已经落地：[LC 3：无重复字符的最长子串](book/src/problems/lc-0003.md)。它包含四种 Rust 实现、穷举差分测试、确定性 Trace、交互动画和 Criterion benchmark。
 

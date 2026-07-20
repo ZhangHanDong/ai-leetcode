@@ -157,4 +157,3 @@ class AlgoViz extends HTMLElement {
 }
 
 customElements.define("algo-viz", AlgoViz);
-

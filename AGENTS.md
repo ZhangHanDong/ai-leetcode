@@ -43,6 +43,17 @@ An agent must not advance a state unless the corresponding acceptance criteria i
 
 - Keep platform adapters separate from the core algorithm.
 - Tests should call the core algorithm directly.
+- Every published LeetCode problem must provide a Rust submission snippet whose
+  method name, parameter types, return type, and `impl Solution` wrapper exactly
+  match the judge template.
+- A submission snippet must compile in the judge environment by itself: do not
+  reference workspace crates or private helper modules, and do not redeclare
+  `struct Solution` when the platform supplies it.
+- Store each copyable submission snippet under `solutions/<id>/`, include that
+  exact file in the book, and compile it in a test harness with a mock
+  `Solution`. Never maintain separate display and tested copies.
+- Label reusable core functions, Rust Playground programs, and direct LeetCode
+  submissions separately. Do not tell readers that a core function can be
+  pasted into the judge unless it satisfies the platform signature.
 - Trace instrumentation must be optional and must not change algorithm semantics.
 - Benchmarks run optimized builds and use deterministic, documented datasets.
-

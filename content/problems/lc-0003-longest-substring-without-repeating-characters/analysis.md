@@ -213,7 +213,20 @@ Rust 的 `str` 是 UTF-8 字节序列，[标准库明确说明](https://doc.rust
 
 反过来，不能把这次约 35 倍写成永久规律。它依赖 Apple M1、当前 Rust 工具链、默认哈希器和特定字符分布。可靠的表达是：“在记录的这次实验和输入上，ASCII 表为 85.15 µs，`HashSet` 为 2.982 ms”；不可靠的表达是：“数组永远比集合快 35 倍”。前者能够被复现和推翻，后者把一次测量误写成普遍定律。
 
-## 可运行的 Rust 版本
+## 可直接提交到 LeetCode 的 Rust 版本
+
+LeetCode 不会调用本章内部使用的 `longest_unique_substring(&str)`。评测器要求代码在 `impl Solution` 中提供名称、参数和返回值都完全匹配的关联函数：
+
+```rust
+# struct Solution;
+{{#include ../../../solutions/0003/leetcode-submit.rs}}
+```
+
+复制时只复制上面的整个代码块，不要只复制其中的算法函数，也不要额外声明 `struct Solution`。LeetCode 已经提供 `Solution` 类型；缺少 `impl Solution` 包装时，评测器调用 `Solution::length_of_longest_substring(...)` 就会得到 `E0599`。
+
+该提交文件同时被仓库中的 `leetcode` 模块编译和测试，因此书中展示的内容与实际验证的内容来自同一个源文件。
+
+## 可在 Rust Playground 运行的版本
 
 下面的代码块可以在 mdBook 中编辑并发送到 Rust Playground。它使用 Unicode `char` 语义，适合观察 `max` 对左边界的保护作用。
 

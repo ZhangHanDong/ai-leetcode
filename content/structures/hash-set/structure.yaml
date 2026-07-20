@@ -1,0 +1,25 @@
+schema_version: 1
+id: "hash-set"
+name: "哈希集合"
+status: "draft"
+model: "保存互不重复的键，支持快速判断某个状态是否已经存在。"
+operations:
+  - name: "contains/insert/remove"
+    semantics: "查询、加入或移除一个键"
+    average_complexity: "O(1)"
+    worst_complexity: "取决于哈希实现和冲突行为"
+invariants:
+  - "集合中的每个键至多出现一次"
+implementation_tradeoffs:
+  - dimension: "通用性与常数开销"
+    choices:
+      - "支持通用可哈希键，但包含哈希、探测和动态容量开销"
+best_for:
+  - "字符集或值域不适合直接索引的成员判断"
+avoid_when:
+  - "键空间很小且稠密，可以用定长表或位集直接索引"
+related_patterns:
+  - "variable-size-sliding-window"
+representative_problems:
+  - "lc-0003"
+

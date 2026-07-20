@@ -1,0 +1,25 @@
+schema_version: 1
+id: "hash-map"
+name: "哈希映射"
+status: "draft"
+model: "把键映射到恢复算法状态所需的摘要，例如字符最后出现位置。"
+operations:
+  - name: "get/insert"
+    semantics: "查询旧摘要并写入最新摘要"
+    average_complexity: "O(1)"
+    worst_complexity: "取决于哈希实现和冲突行为"
+invariants:
+  - "每个键只保存当前算法阶段所需的最新值"
+implementation_tradeoffs:
+  - dimension: "信息量与更新成本"
+    choices:
+      - "比集合保存更多信息，从而可能把多次收缩压缩为一次跳跃"
+best_for:
+  - "需要根据历史位置或计数直接恢复状态"
+avoid_when:
+  - "键空间固定且较小，可以用数组直接寻址"
+related_patterns:
+  - "variable-size-sliding-window"
+representative_problems:
+  - "lc-0003"
+

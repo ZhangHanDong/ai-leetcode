@@ -11,7 +11,6 @@ environment:
   cpu: "record-at-runtime"
   toolchains:
     rust: "record-at-runtime"
-    python: "record-at-runtime"
 
 datasets:
   - id: "small-random"
@@ -34,4 +33,3 @@ protocol:
     - p95_time
     - peak_memory
   exclude_process_startup: true
-

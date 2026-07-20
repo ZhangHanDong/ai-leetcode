@@ -1,0 +1,40 @@
+schema_version: 1
+problem_id: "lc-0003"
+solutions:
+  - "brute-force"
+  - "sliding-hash-set"
+  - "last-seen-hash-map"
+  - "last-seen-ascii"
+environment:
+  runner: "local-and-ci"
+  os: "record-at-runtime"
+  cpu: "record-at-runtime"
+  toolchains:
+    rust: "record-at-runtime"
+    criterion: "0.7.0"
+datasets:
+  - id: "ascii-cyclic"
+    generator: "cyclic_printable_ascii"
+    seed: null
+    sizes: [64, 4096, 50000]
+    distribution: "94 printable ASCII characters in a fixed cycle"
+  - id: "repeat-heavy"
+    generator: "repeat('a')"
+    seed: null
+    sizes: [50000]
+    distribution: "one repeated ASCII character"
+  - id: "unicode-unique"
+    generator: "sequential Unicode scalar values from U+1000"
+    seed: null
+    sizes: [64, 256]
+    distribution: "all characters unique; ASCII specialization excluded"
+protocol:
+  optimized_build: true
+  warmup_seconds: 1
+  measurement_seconds: 2
+  sample_size: 30
+  metrics:
+    - median_time
+    - confidence_interval
+  exclude_process_startup: true
+

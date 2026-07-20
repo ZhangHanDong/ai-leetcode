@@ -1,0 +1,21 @@
+schema_version: 1
+problem_id: "lc-0003"
+
+edges:
+  - type: "generalizes"
+    target: "lc-0567"
+    rationale: "两者都维护连续窗口中的字符状态；LC 567 进一步要求窗口长度固定且频次完全匹配。"
+    verified: false
+  - type: "generalizes"
+    target: "lc-0438"
+    rationale: "LC 438 在固定窗口中维护字符频次，并收集所有满足约束的起点。"
+    verified: false
+  - type: "prerequisite_of"
+    target: "lc-0076"
+    rationale: "LC 76 使用相同的扩张/收缩骨架，但合法性从无重复变为覆盖目标频次。"
+    verified: false
+  - type: "contrasts_with"
+    target: "lc-0209"
+    rationale: "两者都使用变长窗口；LC 209 的可收缩性来自正数和单调和，而非字符唯一性。"
+    verified: false
+

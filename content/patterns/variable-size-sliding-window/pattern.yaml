@@ -1,0 +1,57 @@
+schema_version: 1
+
+id: "variable-size-sliding-window"
+name: "变长滑动窗口"
+status: "draft"
+
+intent: "在线维护一个连续区间，使每个元素至多被左右边界处理常数次，消除重复扫描。"
+
+recognition_signals:
+  - "目标是连续子数组或子串"
+  - "加入右端元素后可以增量更新状态"
+  - "违反约束时，移动左端能够朝恢复合法性的方向推进"
+
+preconditions:
+  - "窗口状态支持加入右端和移除或越过左端"
+  - "左边界不需要回退"
+  - "合法性具有足够的单调性，能够通过持续收缩恢复"
+
+state:
+  fields:
+    - name: "left"
+      meaning: "当前合法窗口的左端点"
+    - name: "right"
+      meaning: "刚纳入考虑的右端点"
+    - name: "window_state"
+      meaning: "判断窗口是否合法所需的最小摘要"
+    - name: "best"
+      meaning: "截至当前位置的最优答案"
+
+invariant:
+  statement: "更新答案时，窗口 [left, right + 1) 满足题目约束。"
+  initialization: "空窗口合法；纳入第一个元素后按约束修复。"
+  maintenance: "每次扩张后持续收缩或直接跳跃，直到约束恢复。"
+  termination: "所有右端点均被处理，因此以任意位置结尾的最优合法窗口都被比较过。"
+
+transitions:
+  - trigger: "考察新的右端元素"
+    action: "更新窗口状态并扩张右边界"
+    trace_event: "window_expand"
+  - trigger: "窗口违反约束"
+    action: "移动左边界并同步移除或失效旧状态"
+    trace_event: "window_shrink"
+  - trigger: "合法窗口优于历史答案"
+    action: "更新 best"
+    trace_event: "best_update"
+
+fails_when:
+  - condition: "移动左边界不能单调地恢复合法性"
+    consequence: "局部收缩可能错过必须重新引入的状态"
+    alternative: "考虑前缀结构、单调结构、搜索或动态规划"
+
+representative_problems:
+  - id: "lc-0003"
+    role: "introductory"
+
+related_patterns: []
+

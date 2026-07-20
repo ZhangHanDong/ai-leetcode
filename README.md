@@ -23,7 +23,7 @@ mdbook serve book --open
 ## 内容从哪里开始
 
 1. 复制 `content/problems/_template/` 创建一道题的知识条目。
-2. 复制 `solutions/_template/` 创建可执行解法、测试、Trace 和 benchmark 配置。
+2. 复制 `solutions/_template/` 创建 Rust 解法、测试、Trace 和 benchmark 配置。
 3. 为题目关联 `content/patterns/` 与 `content/structures/` 中的稳定 ID。
 4. 按 `specs/` 中的门禁依次完成验证、基准测试、可视化和编辑审阅。
 5. 生成的书页只能写入 `book/src/generated/`，不要覆盖知识源文件。
@@ -33,4 +33,3 @@ mdbook serve book --open
 ## 内容边界
 
 仓库只保存题目链接、必要元数据、原创摘要、原创测试、代码、证明和可视化，不自动抓取或完整复制 LeetCode 题面。
-

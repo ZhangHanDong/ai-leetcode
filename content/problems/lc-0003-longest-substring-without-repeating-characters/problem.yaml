@@ -1,0 +1,82 @@
+schema_version: 1
+
+id: "lc-0003"
+slug: "longest-substring-without-repeating-characters"
+title: "无重复字符的最长子串"
+status: "verified"
+difficulty: "medium"
+
+source:
+  platform: "leetcode"
+  url: "https://leetcode.com/problems/longest-substring-without-repeating-characters/"
+  accessed_at: "2026-07-21"
+
+summary: >-
+  给定一个字符串，求其中不含重复字符的最长连续区间长度。只需要长度，
+  不要求返回具体区间；连续性使双指针窗口能够复用相邻候选区间的状态。
+
+input_model:
+  parameters:
+    - name: "s"
+      type: "String"
+      meaning: "由英文字符、数字、符号和空格组成的输入字符串"
+  constraints:
+    - "0 <= s.length <= 50000，因此枚举全部起止位置不适合作为最终解法"
+    - "原题字符集合可按 ASCII 处理，因此可以使用 128 项定长表作为特化实现"
+    - "Rust str 使用 UTF-8；通用库函数仍以 char 计数，避免混淆字节长度和字符数量"
+
+output_model:
+  type: "usize in core API; i32 in LeetCode adapter"
+  meaning: "最长合法连续区间包含的字符数量"
+
+examples:
+  - input: '"tigertrail"'
+    output: "5"
+    explanation: '最长合法区间之一是 "igert"。'
+  - input: '"aaaa"'
+    output: "1"
+    explanation: "窗口每次遇到下一个 a 都必须越过上一次出现位置。"
+  - input: '""'
+    output: "0"
+    explanation: "空输入没有非空子串。"
+
+patterns:
+  - id: "variable-size-sliding-window"
+    role: "primary"
+
+structures:
+  - id: "hash-set"
+    purpose: "显式维护窗口中当前存在的字符"
+  - id: "hash-map"
+    purpose: "保存字符最后出现位置，使左边界一次跳到安全位置"
+  - id: "fixed-ascii-table"
+    purpose: "在 ASCII 前提下用直接索引替代哈希查找"
+
+invariants:
+  - id: "window-contains-no-duplicate-characters"
+    statement: "每轮计算答案时，半开窗口 [left, right + 1) 内不存在重复字符"
+  - id: "left-never-moves-backward"
+    statement: "左边界只向右移动；窗口外的历史重复位置不能使它后退"
+
+solutions:
+  - id: "brute-force"
+    role: "baseline"
+    language: "rust"
+    source: "solutions/0003/src/brute_force.rs"
+  - id: "sliding-hash-set"
+    role: "pedagogical"
+    language: "rust"
+    source: "solutions/0003/src/sliding_hash_set.rs"
+  - id: "last-seen-hash-map"
+    role: "optimized"
+    language: "rust"
+    source: "solutions/0003/src/last_seen_hash_map.rs"
+  - id: "last-seen-ascii"
+    role: "optimized"
+    language: "rust"
+    source: "solutions/0003/src/last_seen_ascii.rs"
+
+editorial:
+  owner: "ai-leetcode"
+  reviewers: []
+  last_verified_at: "2026-07-21"

@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "problem_id": "lc-0003",
+  "cases": [
+    {
+      "id": "empty",
+      "category": "boundary",
+      "input": { "s": "" },
+      "expected": 0
+    },
+    {
+      "id": "all-same",
+      "category": "degenerate",
+      "input": { "s": "aaaa" },
+      "expected": 1
+    },
+    {
+      "id": "duplicate-inside-window",
+      "category": "boundary",
+      "input": { "s": "abba" },
+      "expected": 2
+    },
+    {
+      "id": "mixed-symbols",
+      "category": "basic",
+      "input": { "s": "a b!a" },
+      "expected": 4
+    },
+    {
+      "id": "unicode-char-count",
+      "category": "extended-domain",
+      "input": { "s": "你好吗你" },
+      "expected": 3,
+      "supported_by": ["brute-force", "sliding-hash-set", "last-seen-hash-map"]
+    }
+  ]
+}
+

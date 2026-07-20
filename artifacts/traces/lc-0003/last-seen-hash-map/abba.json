@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "problem_id": "lc-0003",
+  "solution_id": "last-seen-hash-map",
+  "case_id": "duplicate-inside-window",
+  "initial_state": {
+    "best": 0,
+    "input": "abba",
+    "left": 0
+  },
+  "events": [
+    {
+      "step": 0,
+      "type": "visit",
+      "payload": {
+        "character": "a",
+        "index": 0
+      },
+      "explanation": "读取位置 0 的字符 'a'"
+    },
+    {
+      "step": 1,
+      "type": "window_expand",
+      "payload": {
+        "left": 0,
+        "length": 1,
+        "right": 0
+      },
+      "explanation": "合法窗口更新为 [0, 1)"
+    },
+    {
+      "step": 2,
+      "type": "best_update",
+      "payload": {
+        "best": 1,
+        "left": 0,
+        "right": 0
+      },
+      "explanation": "当前合法窗口更长，最优长度更新为 1"
+    },
+    {
+      "step": 3,
+      "type": "visit",
+      "payload": {
+        "character": "b",
+        "index": 1
+      },
+      "explanation": "读取位置 1 的字符 'b'"
+    },
+    {
+      "step": 4,
+      "type": "window_expand",
+      "payload": {
+        "left": 0,
+        "length": 2,
+        "right": 1
+      },
+      "explanation": "合法窗口更新为 [0, 2)"
+    },
+    {
+      "step": 5,
+      "type": "best_update",
+      "payload": {
+        "best": 2,
+        "left": 0,
+        "right": 1
+      },
+      "explanation": "当前合法窗口更长，最优长度更新为 2"
+    },
+    {
+      "step": 6,
+      "type": "visit",
+      "payload": {
+        "character": "b",
+        "index": 2
+      },
+      "explanation": "读取位置 2 的字符 'b'"
+    },
+    {
+      "step": 7,
+      "type": "window_shrink",
+      "payload": {
+        "duplicate": "b",
+        "from_left": 0,
+        "previous_index": 1,
+        "to_left": 2
+      },
+      "explanation": "字符 'b' 在窗口内重复，左边界跳到 2"
+    },
+    {
+      "step": 8,
+      "type": "window_expand",
+      "payload": {
+        "left": 2,
+        "length": 1,
+        "right": 2
+      },
+      "explanation": "合法窗口更新为 [2, 3)"
+    },
+    {
+      "step": 9,
+      "type": "visit",
+      "payload": {
+        "character": "a",
+        "index": 3
+      },
+      "explanation": "读取位置 3 的字符 'a'"
+    },
+    {
+      "step": 10,
+      "type": "window_expand",
+      "payload": {
+        "left": 2,
+        "length": 2,
+        "right": 3
+      },
+      "explanation": "合法窗口更新为 [2, 4)"
+    }
+  ],
+  "final_state": {
+    "result": 2
+  }
+}

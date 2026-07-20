@@ -1,0 +1,26 @@
+schema_version: 1
+id: "fixed-ascii-table"
+name: "ASCII 定长直接寻址表"
+status: "draft"
+model: "使用字节值作为数组下标，为每个 ASCII 字符保存最后位置。"
+operations:
+  - name: "lookup/update"
+    semantics: "按字节值直接读取或写入位置"
+    average_complexity: "O(1)"
+    worst_complexity: "O(1)"
+invariants:
+  - "输入字节必须位于 0..128"
+  - "表项保存字符最近一次出现位置加一，0 表示尚未出现"
+implementation_tradeoffs:
+  - dimension: "速度与适用范围"
+    choices:
+      - "无哈希和动态分配，但只能处理已确认的 ASCII 输入"
+best_for:
+  - "字符集固定、小且稠密的热路径"
+avoid_when:
+  - "输入可能包含非 ASCII Unicode 标量值"
+related_patterns:
+  - "variable-size-sliding-window"
+representative_problems:
+  - "lc-0003"
+

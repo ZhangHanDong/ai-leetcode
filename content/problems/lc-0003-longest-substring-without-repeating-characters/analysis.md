@@ -37,11 +37,20 @@ pub fn longest_unique_substring(input: &str) -> usize {
 }
 ```
 
-实际源码见 [`brute_force.rs:8`](https://github.com/ZhangHanDong/ai-leetcode/blob/main/solutions/0003/src/brute_force.rs#L8)。若字符种类没有上界，最坏时间复杂度是 `O(n²)`：全不重复输入会从每个起点一路扫描到结尾。空间为 `O(min(n, U))`，`U` 是字符种类数。
+实际源码见 [`brute_force.rs:10`](https://github.com/ZhangHanDong/ai-leetcode/blob/main/solutions/0003/src/brute_force.rs#L10)。在哈希操作期望为 `O(1)` 的前提下，时间复杂度是 `O(n · min(n, U))`；若字符种类没有上界，全不重复输入会从每个起点一路扫描到结尾，此时为 `O(n²)`。单次集合最多保存 `O(min(n, U))` 个字符，`U` 是字符种类数；但当前 Rust 实现还将输入物化为 `Vec<char>`，因此峰值额外空间是 `O(n)`。
 
 不过原题字符集很小。若把 ASCII 的 `U <= 128` 视为固定常数，更精确的界是 `O(n · min(n, U))`。这解释了为什么它在某些原题输入上没有理论式看起来那么糟，也提醒我们：复杂度表达必须写清楚哪些量被当作变量。
 
 暴力解仍然重复创建集合，也会从相邻起点反复扫描同一段字符。它的主要价值是简单、容易验证，并作为优化实现的差分测试 oracle。
+
+### 暴力枚举的复杂度图示
+
+```mermaid
+flowchart LR
+    A["暴力枚举<br/>n：字符数；U：字符域大小"]
+    A --> T["期望时间复杂度<br/>O(n · min(n, U))<br/>哈希期望 O(1)；U 不受限时为 O(n²)"]
+    A --> S["峰值额外空间复杂度<br/>O(n)<br/>字符缓存 O(n)，集合 O(min(n, U))"]
+```
 
 ### 优化线索来自哪里
 
@@ -85,7 +94,16 @@ for (right, &character) in chars.iter().enumerate() {
 }
 ```
 
-完整实现见 [`sliding_hash_set.rs:8`](https://github.com/ZhangHanDong/ai-leetcode/blob/main/solutions/0003/src/sliding_hash_set.rs#L8)。右指针每个字符访问一次；左指针也只前进，每个字符最多被移出一次。因此虽然代码里有嵌套的 `while`，总操作次数仍是线性的，期望时间复杂度为 `O(n)`。
+完整实现见 [`sliding_hash_set.rs:9`](https://github.com/ZhangHanDong/ai-leetcode/blob/main/solutions/0003/src/sliding_hash_set.rs#L9)。右指针每个字符访问一次；左指针也只前进，每个字符最多被移出一次。因此虽然代码里有嵌套的 `while`，总操作次数仍是线性的；在哈希操作期望为 `O(1)` 的前提下，期望时间复杂度为 `O(n)`。窗口集合占 `O(min(n, U))`，当前实现的 `Vec<char>` 缓存占 `O(n)`，所以总额外空间为 `O(n)`。
+
+### HashSet 滑动窗口的复杂度图示
+
+```mermaid
+flowchart LR
+    A["HashSet 滑动窗口<br/>n：字符数；U：字符域大小"]
+    A --> T["期望时间复杂度<br/>O(n)<br/>前提：哈希操作期望 O(1)"]
+    A --> S["峰值额外空间复杂度<br/>O(n)<br/>字符缓存 O(n)，窗口集合 O(min(n, U))"]
+```
 
 ### 核心不变量
 
@@ -130,6 +148,15 @@ pub fn longest_unique_substring(input: &str) -> usize {
 
 这个实现不必从 `HashMap` 删除窗口外的旧记录。旧记录可以保留，因为 `max` 会让它失效。时间复杂度仍是期望 `O(n)`，空间为 `O(min(n, U))`，但它避免了 `HashSet` 版本的逐项删除。
 
+### 最后位置 HashMap 的复杂度图示
+
+```mermaid
+flowchart LR
+    A["最后位置 HashMap<br/>n：字符数；U：字符域大小"]
+    A --> T["期望时间复杂度<br/>O(n)<br/>前提：哈希操作期望 O(1)"]
+    A --> S["峰值额外空间复杂度<br/>O(min(n, U))<br/>每种已见字符保存一个位置"]
+```
+
 从状态设计看，`HashSet` 表达的是当前窗口的精确成员，而 `HashMap` 表达的是能够重建窗口边界的历史摘要。后者可能包含窗口外的字符，却仍足以求解；算法状态不必复制现实的全部细节，只要包含决定下一步所需的最小信息。这个区别会在频次窗口、前缀状态和动态规划中反复出现。
 
 ## 第三次优化：把哈希映射换成直接寻址
@@ -157,6 +184,15 @@ pub fn longest_unique_substring(input: &str) -> Option<usize> {
 ```
 
 源码见 [`last_seen_ascii.rs:6`](https://github.com/ZhangHanDong/ai-leetcode/blob/main/solutions/0003/src/last_seen_ascii.rs#L6)。表中保存“位置加一”，让 `0` 同时充当“从未出现”的哨兵；这样不需要 `[Option<usize>; 128]`。空间固定为 128 个 `usize`，查询没有哈希、冲突探测和动态扩容。
+
+### ASCII 直接寻址表的复杂度图示
+
+```mermaid
+flowchart LR
+    A["ASCII 直接寻址表<br/>n：字节数；字符域固定为 128"]
+    A --> T["最坏时间复杂度<br/>O(n)<br/>ASCII 预检与主循环各线性扫描一次"]
+    A --> S["峰值额外空间复杂度<br/>O(1)<br/>固定 128 个 usize"]
+```
 
 这个实现不是对 `HashMap` 的无条件替代。原题描述列出了英文字母、数字、符号和空格，但没有直接把编码写成 ASCII；因此本站的正式提交适配器使用 Unicode-safe 的 `HashMap` 版本。定长表先用 `is_ascii()` 检查额外前提，非 ASCII 输入返回 `None`。如果产品语义需要 Unicode，就应选择前一个实现，不能为了跑分快而静默改变“字符”的定义。
 

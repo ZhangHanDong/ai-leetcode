@@ -3,7 +3,8 @@ use std::collections::HashSet;
 /// Maintains the current valid window explicitly in a `HashSet`.
 ///
 /// Each character is inserted once and removed at most once. Expected time is
-/// `O(n)` and auxiliary space is `O(min(n, U))`.
+/// `O(n)`. The set uses `O(min(n, U))` space, while the current `Vec<char>`
+/// buffer makes total auxiliary space `O(n)`.
 #[must_use]
 pub fn longest_unique_substring(input: &str) -> usize {
     let chars: Vec<char> = input.chars().collect();

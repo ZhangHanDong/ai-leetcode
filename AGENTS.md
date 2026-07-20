@@ -30,12 +30,20 @@ An agent must not advance a state unless the corresponding acceptance criteria i
 6. Prefer stable IDs over display names in cross-references.
 7. Keep generated files out of manual reviews unless the task is specifically about rendering.
 8. AI-authored prose must distinguish verified facts, analysis, and editorial judgment.
+9. Every algorithm presented in the published book must have a visual complexity
+   diagram showing both time complexity and auxiliary space complexity.
 
 ## Writing rules
 
 - Problem pages explain one problem deeply; pattern pages synthesize at least three problems.
 - Start from the invariant and state representation, not from memorized code.
 - Compare approaches by constraints, complexity, memory, implementation risk, and measured results.
+- Place a Mermaid complexity diagram next to every algorithm. Each diagram must
+  define its variables, state whether bounds are worst-case, expected, or
+  amortized, expose assumptions such as constant-time hashing or a fixed input
+  domain, and account for implementation storage such as copied buffers.
+- Keep asymptotic complexity diagrams separate from benchmark charts: the former
+  explain growth, while the latter report measurements from a named environment.
 - Avoid repeating the same proof or template across chapters; link to the canonical pattern page.
 - Use the templates in `templates/` and record the page budget before drafting long chapters.
 

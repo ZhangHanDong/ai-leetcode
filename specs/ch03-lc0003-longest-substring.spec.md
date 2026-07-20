@@ -60,4 +60,5 @@
 - [x] Trace 可由 Rust 示例程序确定性生成
 - [x] benchmark 记录工具链、CPU、数据分布和 source revision
 - [x] 章节在预算内，且每个性能结论有数据或明确标记为推导
+- [x] 四种算法分别用 Mermaid 图展示时间与峰值额外空间复杂度
 - [x] mdBook、Rust 测试、Clippy 和格式检查通过

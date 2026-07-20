@@ -2,8 +2,10 @@ use std::collections::HashSet;
 
 /// Enumerates every start position and extends it until the first duplicate.
 ///
-/// Time: `O(n^2)` for an unbounded character set. Space: `O(min(n, U))`, where
-/// `U` is the number of distinct characters in the input domain.
+/// Expected time is `O(n * min(n, U))` when hash-table operations are expected
+/// `O(1)`; this becomes `O(n^2)` when `U` grows with `n`. The set uses
+/// `O(min(n, U))` space, while the current `Vec<char>` buffer makes total
+/// auxiliary space `O(n)`.
 #[must_use]
 pub fn longest_unique_substring(input: &str) -> usize {
     let chars: Vec<char> = input.chars().collect();

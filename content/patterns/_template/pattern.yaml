@@ -1,0 +1,41 @@
+schema_version: 1
+
+id: "replace-with-pattern-id"
+name: "替换为模式名称"
+status: "draft"
+
+intent: "这个模式消除哪一种重复工作或搜索不确定性"
+
+recognition_signals:
+  - "题目中出现什么约束时应该想到它"
+
+preconditions:
+  - "模式成立必须满足的条件"
+
+state:
+  fields:
+    - name: "state_name"
+      meaning: "状态含义"
+
+invariant:
+  statement: "模式的核心不变量"
+  initialization: "初始时为何成立"
+  maintenance: "状态转移后为何继续成立"
+  termination: "结束时如何推出答案"
+
+transitions:
+  - trigger: "发生什么"
+    action: "如何更新状态"
+    trace_event: "replace-with-event"
+
+fails_when:
+  - condition: "哪个前提不成立"
+    consequence: "算法会产生什么错误或退化"
+    alternative: "应考虑什么替代模式"
+
+representative_problems:
+  - id: "lc-0000"
+    role: "introductory"
+
+related_patterns: []
+

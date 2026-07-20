@@ -1,0 +1,37 @@
+schema_version: 1
+
+problem_id: "lc-0000"
+solutions:
+  - "baseline-rust"
+  - "optimized-rust"
+
+environment:
+  runner: "ci"
+  os: "record-at-runtime"
+  cpu: "record-at-runtime"
+  toolchains:
+    rust: "record-at-runtime"
+    python: "record-at-runtime"
+
+datasets:
+  - id: "small-random"
+    generator: "replace-with-generator-id"
+    seed: 20260721
+    size: 100
+    distribution: "uniform"
+  - id: "large-adversarial"
+    generator: "replace-with-generator-id"
+    seed: 20260721
+    size: 100000
+    distribution: "document-adversarial-shape"
+
+protocol:
+  optimized_build: true
+  warmup_iterations: 10
+  measurement_iterations: 100
+  metrics:
+    - median_time
+    - p95_time
+    - peak_memory
+  exclude_process_startup: true
+

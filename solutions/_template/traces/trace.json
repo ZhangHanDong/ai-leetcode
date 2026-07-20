@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "problem_id": "lc-0000",
+  "solution_id": "optimized-rust",
+  "case_id": "basic-01",
+  "initial_state": {
+    "values": [3, 1, 2]
+  },
+  "events": [
+    {
+      "step": 0,
+      "type": "visit",
+      "payload": {
+        "index": 0
+      },
+      "explanation": "解释这一事件对不变量的影响"
+    },
+    {
+      "step": 1,
+      "type": "compare",
+      "payload": {
+        "left": 0,
+        "right": 1
+      },
+      "explanation": "说明比较结果如何决定下一次状态转移"
+    }
+  ],
+  "final_state": {
+    "result": null
+  }
+}
+

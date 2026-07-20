@@ -1,0 +1,61 @@
+schema_version: 1
+
+id: "lc-0000"
+slug: "replace-with-problem-slug"
+title: "替换为题目标题"
+status: "draft"
+difficulty: "medium"
+
+source:
+  platform: "leetcode"
+  url: "https://leetcode.com/problems/replace-with-problem-slug/"
+  accessed_at: "YYYY-MM-DD"
+
+# 使用原创摘要，不复制完整题面。
+summary: >-
+  用一至三句话描述去除故事背景后的计算问题。
+
+input_model:
+  parameters:
+    - name: "input"
+      type: "replace-with-type"
+      meaning: "这个输入在模型中的含义"
+  constraints:
+    - "列出影响算法选择的输入规模或数据约束"
+
+output_model:
+  type: "replace-with-type"
+  meaning: "输出所表达的目标"
+
+examples:
+  - input: "原创或允许使用的示例"
+    output: "期望输出"
+    explanation: "只解释这个示例揭示的关键边界"
+
+patterns:
+  - id: "replace-with-pattern-id"
+    role: "primary"
+
+structures:
+  - id: "replace-with-structure-id"
+    purpose: "为什么需要它"
+
+invariants:
+  - id: "replace-with-invariant-id"
+    statement: "在算法指定阶段始终成立的性质"
+
+solutions:
+  - id: "baseline-rust"
+    role: "baseline"
+    language: "rust"
+    source: "solutions/0000/rust/baseline.rs"
+  - id: "optimized-rust"
+    role: "optimized"
+    language: "rust"
+    source: "solutions/0000/rust/optimized.rs"
+
+editorial:
+  owner: ""
+  reviewers: []
+  last_verified_at: null
+

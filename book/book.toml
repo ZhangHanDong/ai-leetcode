@@ -1,0 +1,25 @@
+[book]
+title = "AI LeetCode：从题目到算法模式"
+authors = ["ai-leetcode contributors"]
+description = "通过可验证代码、交互动画和性能实验学习数据结构与算法"
+language = "zh-CN"
+multilingual = false
+src = "src"
+
+[build]
+build-dir = "book"
+create-missing = false
+
+[output.html]
+default-theme = "light"
+preferred-dark-theme = "navy"
+mathjax-support = true
+additional-css = ["theme/algo.css"]
+additional-js = ["theme/algo-lab.js"]
+git-repository-url = "https://github.com/ZhangHanDong/ai-leetcode"
+edit-url-template = "https://github.com/ZhangHanDong/ai-leetcode/edit/main/book/{path}"
+
+[output.html.playground]
+editable = true
+runnable = true
+

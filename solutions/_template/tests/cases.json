@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "problem_id": "lc-0000",
+  "cases": [
+    {
+      "id": "basic-01",
+      "category": "basic",
+      "input": {
+        "values": [1, 2, 3]
+      },
+      "expected": [1, 2, 3],
+      "notes": "替换为题目特定的原创用例"
+    },
+    {
+      "id": "boundary-empty",
+      "category": "boundary",
+      "input": {
+        "values": []
+      },
+      "expected": [],
+      "notes": "保留输入约束允许的边界用例"
+    }
+  ]
+}
+

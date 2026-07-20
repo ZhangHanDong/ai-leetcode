@@ -1,0 +1,9 @@
+schema_version: 1
+problem_id: "lc-0000"
+
+edges:
+  - type: "same_invariant"
+    target: "lc-0001"
+    rationale: "明确说明两个问题共享的状态或不变量"
+    verified: false
+

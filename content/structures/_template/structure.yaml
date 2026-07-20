@@ -1,0 +1,31 @@
+schema_version: 1
+
+id: "replace-with-structure-id"
+name: "替换为数据结构名称"
+status: "draft"
+
+model: "它保存什么信息以及维护什么关系"
+
+operations:
+  - name: "operation"
+    semantics: "操作语义"
+    average_complexity: "O(?)"
+    worst_complexity: "O(?)"
+
+invariants:
+  - "内部结构必须始终满足的性质"
+
+implementation_tradeoffs:
+  - dimension: "例如连续内存与指针结构"
+    choices:
+      - "选择及其代价"
+
+best_for:
+  - "适用场景"
+
+avoid_when:
+  - "不适用场景"
+
+related_patterns: []
+representative_problems: []
+

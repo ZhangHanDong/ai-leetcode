@@ -1,0 +1,12 @@
+/book/book/
+/book/.mdbook-*/
+/target/
+/.cache/
+/.DS_Store
+__pycache__/
+*.pyc
+
+# 可重建的临时产物；经审核的发布快照可使用 git add -f 单独纳入。
+/artifacts/tmp/
+/book/src/generated/
+

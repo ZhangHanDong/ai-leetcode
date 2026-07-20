@@ -1,0 +1,15 @@
+algo-lab {
+  display: block;
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid var(--table-border-color);
+  border-radius: 0.5rem;
+  background: var(--table-header-bg);
+}
+
+algo-lab .algo-lab__status {
+  margin-top: 0.5rem;
+  font-size: 0.9em;
+  opacity: 0.8;
+}
+

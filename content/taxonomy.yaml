@@ -1,0 +1,47 @@
+schema_version: 1
+
+difficulties:
+  - easy
+  - medium
+  - hard
+
+publication_states:
+  - draft
+  - tested
+  - verified
+  - benchmarked
+  - visualized
+  - editorial-reviewed
+  - published
+
+relation_types:
+  - same_invariant
+  - variation_of
+  - generalizes
+  - transforms_to
+  - contrasts_with
+  - prerequisite_of
+
+solution_roles:
+  - baseline
+  - optimized
+  - alternative
+  - pedagogical
+
+trace_events:
+  - compare
+  - swap
+  - visit
+  - push
+  - pop
+  - enqueue
+  - dequeue
+  - window_expand
+  - window_shrink
+  - counter_update
+  - dp_update
+  - choose
+  - backtrack
+  - union
+  - relax_edge
+

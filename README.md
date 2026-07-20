@@ -14,6 +14,15 @@
 
 ## 快速开始
 
+先安装当前构建所需的 mdBook 与 Mermaid 预处理器：
+
+```bash
+cargo install mdbook --version 0.4.43 --locked
+cargo install mdbook-mermaid --version 0.9.0 --locked
+```
+
+启动本地书站：
+
 ```bash
 mdbook serve book --open
 ```

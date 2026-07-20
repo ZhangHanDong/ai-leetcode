@@ -15,10 +15,15 @@ default-theme = "light"
 preferred-dark-theme = "navy"
 mathjax-support = true
 additional-css = ["theme/algo.css"]
-additional-js = ["theme/algo-lab.js", "theme/algo-viz.js"]
+additional-js = ["theme/algo-lab.js", "theme/algo-viz.js", "mermaid.min.js", "mermaid-init.js"]
 git-repository-url = "https://github.com/ZhangHanDong/ai-leetcode"
 edit-url-template = "https://github.com/ZhangHanDong/ai-leetcode/edit/main/book/{path}"
 
 [output.html.playground]
 editable = true
 runnable = true
+
+[preprocessor]
+
+[preprocessor.mermaid]
+command = "mdbook-mermaid"

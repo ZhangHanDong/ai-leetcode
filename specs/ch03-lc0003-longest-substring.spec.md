@@ -54,11 +54,10 @@
 
 ## Acceptance criteria
 
-- [ ] 四个实现共享同一语义测试集
-- [ ] Unicode 通用实现与 ASCII 特化实现的边界写清楚
-- [ ] 使用穷举差分测试比较优化解与暴力基线
-- [ ] Trace 可由 Rust 示例程序确定性生成
-- [ ] benchmark 记录工具链、CPU、数据分布和 source revision
-- [ ] 章节在预算内，且每个性能结论有数据或明确标记为推导
-- [ ] mdBook、Rust 测试、Clippy 和格式检查通过
-
+- [x] 四个实现共享同一语义测试集
+- [x] Unicode 通用实现与 ASCII 特化实现的边界写清楚
+- [x] 使用穷举差分测试比较优化解与暴力基线
+- [x] Trace 可由 Rust 示例程序确定性生成
+- [x] benchmark 记录工具链、CPU、数据分布和 source revision
+- [x] 章节在预算内，且每个性能结论有数据或明确标记为推导
+- [x] mdBook、Rust 测试、Clippy 和格式检查通过

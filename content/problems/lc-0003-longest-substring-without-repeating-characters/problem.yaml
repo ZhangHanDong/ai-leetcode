@@ -3,7 +3,7 @@ schema_version: 1
 id: "lc-0003"
 slug: "longest-substring-without-repeating-characters"
 title: "无重复字符的最长子串"
-status: "verified"
+status: "published"
 difficulty: "medium"
 
 source:
@@ -22,7 +22,7 @@ input_model:
       meaning: "由英文字符、数字、符号和空格组成的输入字符串"
   constraints:
     - "0 <= s.length <= 50000，因此枚举全部起止位置不适合作为最终解法"
-    - "原题字符集合可按 ASCII 处理，因此可以使用 128 项定长表作为特化实现"
+    - "原题没有直接声明 ASCII；128 项定长表仅用于通过 is_ascii() 检查的特化路径"
     - "Rust str 使用 UTF-8；通用库函数仍以 char 计数，避免混淆字节长度和字符数量"
 
 output_model:
@@ -78,5 +78,6 @@ solutions:
 
 editorial:
   owner: "ai-leetcode"
-  reviewers: []
+  reviewers:
+    - "codex-self-review"
   last_verified_at: "2026-07-21"

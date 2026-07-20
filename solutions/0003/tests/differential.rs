@@ -37,6 +37,16 @@ fn unicode_implementations_count_chars_not_bytes() {
 }
 
 #[test]
+fn leetcode_adapter_uses_the_unicode_safe_implementation() {
+    assert_eq!(
+        lc0003_longest_substring::leetcode::Solution::length_of_longest_substring(
+            "你好吗你".to_owned()
+        ),
+        3
+    );
+}
+
+#[test]
 fn optimized_implementations_match_brute_force_exhaustively() {
     const ALPHABET: &[u8] = b"abcd";
 

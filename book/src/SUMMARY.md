@@ -16,6 +16,7 @@
 # 第三篇：数组、字符串与指针技巧
 
 - [线性序列上的状态移动](parts/03-sequences.md)
+  - [LC 3：无重复字符的最长子串](problems/lc-0003.md)
 
 # 第四篇：栈、队列与单调结构
 
@@ -51,4 +52,3 @@
 - [模式索引](appendices/pattern-index.md)
 - [术语表](appendices/glossary.md)
 - [参与贡献](appendices/contributing.md)
-

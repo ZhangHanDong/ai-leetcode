@@ -18,7 +18,13 @@
 mdbook serve book --open
 ```
 
-当前阶段提供书籍大纲、内容模型和创作模板。代码运行服务、生成器和完整动画组件将在后续阶段实现。
+运行全部质量检查：
+
+```bash
+make check
+```
+
+首个完整样板已经落地：[LC 3：无重复字符的最长子串](book/src/problems/lc-0003.md)。它包含四种 Rust 实现、穷举差分测试、确定性 Trace、交互动画和 Criterion benchmark。
 
 ## 内容从哪里开始
 

@@ -1,0 +1,180 @@
+{
+  "schema_version": 1,
+  "problem_id": "lc-0003",
+  "source_revision": "46b7e27acad05b3920a21216add40b7cbbc87477",
+  "recorded_at": "2026-07-20T18:19:08Z",
+  "command": "cargo bench -p lc0003-longest-substring --bench compare -- --noplot",
+  "environment": {
+    "os": "Darwin 23.6.0 arm64",
+    "cpu": "Apple M1",
+    "rustc": "1.98.0-nightly (f20a92ec0 2026-06-07)",
+    "criterion": "0.7.0"
+  },
+  "protocol": {
+    "profile": "bench (optimized)",
+    "warmup_seconds": 1,
+    "measurement_seconds": 2,
+    "sample_size": 30,
+    "process_startup_included": false
+  },
+  "results": [
+    {
+      "dataset": "ascii-cyclic",
+      "size": 4096,
+      "solution": "brute-force",
+      "median_ns": 26686854.167,
+      "confidence_interval_95_ns": [24081993.0, 31404013.833]
+    },
+    {
+      "dataset": "ascii-cyclic",
+      "size": 50000,
+      "solution": "brute-force",
+      "median_ns": 218961792.0,
+      "confidence_interval_95_ns": [211376083.5, 226143604.5]
+    },
+    {
+      "dataset": "ascii-cyclic",
+      "size": 64,
+      "solution": "brute-force",
+      "median_ns": 160448.273,
+      "confidence_interval_95_ns": [133863.514, 161678.471]
+    },
+    {
+      "dataset": "ascii-cyclic",
+      "size": 4096,
+      "solution": "last-seen-ascii",
+      "median_ns": 12390.597,
+      "confidence_interval_95_ns": [11930.463, 12672.095]
+    },
+    {
+      "dataset": "ascii-cyclic",
+      "size": 50000,
+      "solution": "last-seen-ascii",
+      "median_ns": 85145.585,
+      "confidence_interval_95_ns": [77749.095, 88438.244]
+    },
+    {
+      "dataset": "ascii-cyclic",
+      "size": 64,
+      "solution": "last-seen-ascii",
+      "median_ns": 231.505,
+      "confidence_interval_95_ns": [222.984, 244.02]
+    },
+    {
+      "dataset": "ascii-cyclic",
+      "size": 4096,
+      "solution": "last-seen-hash-map",
+      "median_ns": 104161.216,
+      "confidence_interval_95_ns": [102974.916, 125047.162]
+    },
+    {
+      "dataset": "ascii-cyclic",
+      "size": 50000,
+      "solution": "last-seen-hash-map",
+      "median_ns": 797968.646,
+      "confidence_interval_95_ns": [724829.867, 889798.294]
+    },
+    {
+      "dataset": "ascii-cyclic",
+      "size": 64,
+      "solution": "last-seen-hash-map",
+      "median_ns": 5801.83,
+      "confidence_interval_95_ns": [5357.16, 6787.654]
+    },
+    {
+      "dataset": "ascii-cyclic",
+      "size": 4096,
+      "solution": "sliding-hash-set",
+      "median_ns": 273538.138,
+      "confidence_interval_95_ns": [250894.837, 295177.043]
+    },
+    {
+      "dataset": "ascii-cyclic",
+      "size": 50000,
+      "solution": "sliding-hash-set",
+      "median_ns": 2982002.85,
+      "confidence_interval_95_ns": [2958790.015, 3079117.395]
+    },
+    {
+      "dataset": "ascii-cyclic",
+      "size": 64,
+      "solution": "sliding-hash-set",
+      "median_ns": 9673.053,
+      "confidence_interval_95_ns": [8615.379, 11272.295]
+    },
+    {
+      "dataset": "repeat-heavy",
+      "size": 50000,
+      "solution": "brute-force",
+      "median_ns": 4193574.705,
+      "confidence_interval_95_ns": [3809453.797, 4337030.381]
+    },
+    {
+      "dataset": "repeat-heavy",
+      "size": 50000,
+      "solution": "last-seen-ascii",
+      "median_ns": 88782.629,
+      "confidence_interval_95_ns": [84212.957, 91506.498]
+    },
+    {
+      "dataset": "repeat-heavy",
+      "size": 50000,
+      "solution": "last-seen-hash-map",
+      "median_ns": 802102.634,
+      "confidence_interval_95_ns": [795383.35, 814671.577]
+    },
+    {
+      "dataset": "repeat-heavy",
+      "size": 50000,
+      "solution": "sliding-hash-set",
+      "median_ns": 3057214.402,
+      "confidence_interval_95_ns": [2654122.384, 3757399.17]
+    },
+    {
+      "dataset": "unicode-unique",
+      "size": 256,
+      "solution": "brute-force",
+      "median_ns": 2618625.904,
+      "confidence_interval_95_ns": [2392369.45, 2788817.087]
+    },
+    {
+      "dataset": "unicode-unique",
+      "size": 64,
+      "solution": "brute-force",
+      "median_ns": 155091.64,
+      "confidence_interval_95_ns": [145570.771, 169524.904]
+    },
+    {
+      "dataset": "unicode-unique",
+      "size": 256,
+      "solution": "last-seen-hash-map",
+      "median_ns": 27201.014,
+      "confidence_interval_95_ns": [26601.961, 27801.928]
+    },
+    {
+      "dataset": "unicode-unique",
+      "size": 64,
+      "solution": "last-seen-hash-map",
+      "median_ns": 4135.516,
+      "confidence_interval_95_ns": [3963.216, 5110.686]
+    },
+    {
+      "dataset": "unicode-unique",
+      "size": 256,
+      "solution": "sliding-hash-set",
+      "median_ns": 35028.554,
+      "confidence_interval_95_ns": [34440.536, 35280.508]
+    },
+    {
+      "dataset": "unicode-unique",
+      "size": 64,
+      "solution": "sliding-hash-set",
+      "median_ns": 6855.246,
+      "confidence_interval_95_ns": [5969.357, 7528.385]
+    }
+  ],
+  "limitations": [
+    "Single-machine snapshot; absolute timings are not portable.",
+    "Memory allocation and peak memory were not measured in this run."
+  ]
+}
